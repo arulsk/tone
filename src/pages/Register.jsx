@@ -1,4 +1,4 @@
-import React, { useState,setPasswordError,passwordError } from "react";
+import React, { useState } from "react";
 import Add from "../img/file.png";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../firebase";
@@ -8,7 +8,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
   const [err, setErr] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [ setLoading] = useState(false);
   const navigate = useNavigate();
   const [passwordError, setPasswordError] = useState("");
 
@@ -23,9 +23,7 @@ const Register = () => {
     if (password.length < 6) {
       setPasswordError("Password must be at least 6 characters long.");
       return;
-    } else {
-      setPasswordError("");
-    }
+    } 
 
 
     try {
