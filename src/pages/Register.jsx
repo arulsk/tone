@@ -5,13 +5,10 @@ import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
-
 const Register = () => {
   const [err, setErr] = useState(false);
-  const [ setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [passwordError, setPasswordError] = useState("");
-
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -20,11 +17,6 @@ const Register = () => {
     const email = e.target[1].value;
     const password = e.target[2].value;
     const file = e.target[3].files[0];
-    if (password.length < 6) {
-      setPasswordError("Password must be at least 6 characters long.");
-      return;
-    } 
-
 
     try {
       //Create user
@@ -65,33 +57,32 @@ const Register = () => {
       setLoading(false);
     }
   };
-
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">CHATBOX</span>
+        <span className="logo">Lama Chat</span>
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
-          <input required type="text" placeholder="Enter Name" />
-          <input required type="email" placeholder="Enter EmailID" />
-          <input required type="password" placeholder="Password" />
-          
+          <input required type="text" placeholder="display name" />
+          <input required type="email" placeholder="email" />
+          <input required type="password" placeholder="password" />
           <input required style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
-            <img src={Add} alt="" required/>
-            <span>Add an profile</span>
+            <img src={Add} alt="" />
+            <span>Add an avatar</span>
           </label>
-          <button >Sign up</button>
-        
+          <button disabled={loading}>Sign up</button>
+          {loading && "Uploading and compressing the image please wait..."}
           {err && <span>Something went wrong</span>}
-          {passwordError && <span className="error">{passwordError}</span>}
         </form>
         <p>
-          You do have an account? <Link to="/Login">Login</Link>
+          You do have an account? <Link to="/register">Login</Link>
         </p>
       </div>
     </div>
   );
 };
 
+
+ 
 export default Register;
