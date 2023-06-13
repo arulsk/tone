@@ -7,12 +7,12 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCUbNo-6-6IOp37Y9isPEpw1HBEaZl4Mk8",
-  authDomain: "arulchat-9ae4b.firebaseapp.com",
-  projectId: "arulchat-9ae4b",
-  storageBucket: "arulchat-9ae4b.appspot.com",
-  messagingSenderId: "437879593565",
-  appId: "1:437879593565:web:d335c29fc91ae76e438bb4"
+apiKey: "AIzaSyD5h6gG61PCgHtqQ9zOVjXLVBgTiS8tKvw",
+  authDomain: "final-8487b.firebaseapp.com",
+  projectId: "final-8487b",
+  storageBucket: "final-8487b.appspot.com",
+  messagingSenderId: "465050791737",
+  appId: "1:465050791737:web:be39e6a69f935a053bc2e8"
   };
 
 export const app = initializeApp(firebaseConfig);
